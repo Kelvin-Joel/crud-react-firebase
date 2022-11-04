@@ -57,6 +57,7 @@ export const dataprovider = ({children}) =>{
 
   const ClearInputs = () =>{
     setText(dataInitial)
+    setVerification("")
   }
 
   return (

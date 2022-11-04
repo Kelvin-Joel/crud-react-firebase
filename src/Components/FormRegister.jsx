@@ -1,14 +1,12 @@
 import Swal from 'sweetalert2'
 import { useContext } from "react";
 import { dataContext } from '../context/FirebaseContext'
-
 import "../index.css";
 
 const FormRegister = () => {
   
   const {text,setText,UppdateProducts,AddProducts,ChangeComponent,verification} = useContext(dataContext);
   
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if(text.name==="" || text.price === "" || text.quantity===""){
@@ -38,6 +36,8 @@ const FormRegister = () => {
     setText({ ...text, [e.target.name]: e.target.value });
   };
 
+  
+
   return (
     <div className="formulario position-fixed">
       <form className="form-control w-50 rounded position-relative" onSubmit={(e) => handleSubmit(e)}>
@@ -55,7 +55,7 @@ const FormRegister = () => {
         <div className="form-control border-white">
           <label htmlFor="">Price :</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             name="price"
             onChange={(e) => handleChange(e)}
@@ -65,7 +65,7 @@ const FormRegister = () => {
         <div className="form-control border-white">
           <label htmlFor="">Quantity :</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             name="quantity"
             onChange={(e) => handleChange(e)}
@@ -73,7 +73,7 @@ const FormRegister = () => {
           />
         </div>
         <div className="form-control border-white d-flex justify-content-around">
-          <button className="btn btn-primary rounded">Save!</button>
+          <button className="btn btn-primary rounded">{verification!=='' ? "Update" : "Save!"}</button>
         </div>
       </form>
       <button className="btn btn-danger rounded button" onClick={()=>ChangeComponent()}>X</button>
